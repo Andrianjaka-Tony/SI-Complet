@@ -1,0 +1,29 @@
+@font-face {
+  font-family: Dancing;
+  src: url(../font/dancing.ttf);
+}
+$dancing: Dancing;
+
+@font-face {
+  font-family: LibreBaskerville;
+  src: url(../font/libre-baskerville.ttf);
+}
+$libreBaskerville: LibreBaskerville;
+
+@font-face {
+  font-family: Playfair Display;
+  src: url(../font/playfair-display.ttf);
+}
+$playfairDisplay: Playfair Display;
+
+@font-face {
+  font-family: Poppins Light;
+  src: url(../font/poppins-light.ttf);
+}
+$poppinsLight: Poppins Light;
+
+@font-face {
+  font-family: Signika;
+  src: url(../font/signika.ttf);
+}
+$signika: SIgnika;

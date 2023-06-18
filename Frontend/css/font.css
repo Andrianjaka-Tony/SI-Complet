@@ -1,0 +1,20 @@
+@font-face {
+  font-family: Dancing;
+  src: url(../font/dancing.ttf);
+}
+@font-face {
+  font-family: LibreBaskerville;
+  src: url(../font/libre-baskerville.ttf);
+}
+@font-face {
+  font-family: Playfair Display;
+  src: url(../font/playfair-display.ttf);
+}
+@font-face {
+  font-family: Poppins Light;
+  src: url(../font/poppins-light.ttf);
+}
+@font-face {
+  font-family: Signika;
+  src: url(../font/signika.ttf);
+}/*# sourceMappingURL=font.css.map */

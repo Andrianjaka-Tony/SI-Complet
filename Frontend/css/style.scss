@@ -1,0 +1,975 @@
+@import "./reset";
+@import "./font";
+
+$color: rgb(206, 57, 84);
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 70px;
+  // background: white;
+  display: flex;
+  align-items: center;
+
+  .navbar__title {
+    font-family: $dancing;
+    font-size: 35px;
+    margin-left: 20px;
+    color: $color;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 200px;
+  height: calc(100vh - 100px);
+  overflow: auto;
+
+  .sidebar__item {
+    width: 100%;
+    padding: 10px 20px;
+    font-family: $poppinsLight;
+    transition: 200ms;
+    cursor: pointer;
+  }
+  .sidebar__item.active,
+  .sidebar__item:hover {
+    color: $color;
+  }
+}
+
+#root {
+  width: calc(100vw - 200px);
+  padding: 10px;
+  margin-top: 120px;
+  margin-left: 200px;
+  transition: 400ms;
+  margin-bottom: 100px;
+}
+
+span.label {
+  margin: 0 20px;
+  font-family: $poppinsLight;
+  pointer-events: none;
+}
+
+.input__date {
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-bottom: 1px black solid;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.btn {
+  font-family: $poppinsLight;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn__modifier {
+  background: rgb(95, 162, 39);
+  color: white;
+}
+
+.btn__ajouter {
+  background: rgb(146, 104, 181);
+  color: white;
+}
+
+.societe {
+  display: flex;
+  gap: 20px;
+
+  .societe__logo {
+    width: 200px;
+  }
+
+  .societe__infos {
+    .societe__infos__nom {
+      font-family: $signika;
+      font-size: 50px;
+      font-weight: 100;
+      color: rgba(0, 0, 0, 0.701);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .societe__infos__text {
+      font-family: $poppinsLight;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .societe__infos__autres {
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      color: white;
+      color: $color;
+      font-family: $poppinsLight;
+    }
+  }
+}
+
+.table__container {
+  width: 100%;
+  overflow: auto;
+  position: relative;
+
+  .table {
+    tr {
+      display: flex;
+      gap: 1.5px;
+      font-family: $poppinsLight;
+
+      td.first {
+        border-top-left-radius: 20px;
+      }
+
+      td.last {
+        border-top-right-radius: 20px;
+      }
+
+      td {
+        padding: 5px 0 5px 20px;
+        display: flex;
+        transition: 200ms;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      td.numeric {
+        color: $color;
+      }
+    }
+
+    .table__body {
+      transition: 200ms;
+      height: 420px;
+      tr {
+        cursor: pointer;
+        display: none;
+
+        td {
+          font-size: 14px;
+          padding: 15px 0 15px 20px;
+        }
+      }
+
+      tr.active {
+        display: flex;
+      }
+
+      tr:hover {
+        td {
+          background: rgba(0, 0, 0, 0.065);
+        }
+      }
+    }
+
+    .table__header {
+      tr td {
+        padding: 15px 0 15px 20px;
+        background: $color;
+        color: white;
+        font-size: 14px;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .table__container__pagination {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+
+    span {
+      cursor: pointer;
+      width: 33px;
+      height: 33px;
+      border: 1px $color groove;
+      font-size: 18px;
+      color: $color;
+      font-family: $poppinsLight;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: 200ms;
+    }
+
+    span.active,
+    span:hover {
+      background: $color;
+      color: white;
+    }
+  }
+
+  .table__row__count {
+    margin-top: 10px;
+    font-family: $poppinsLight;
+    font-size: 12px;
+
+    span {
+      margin-left: 10px;
+      font-size: 18px;
+      color: $color;
+    }
+  }
+}
+
+.livre {
+  width: 100%;
+
+  .livre__title {
+    font-family: $poppinsLight;
+    font-size: 24px;
+    color: $color;
+    opacity: 0.7;
+  }
+
+  .livre__subtitle {
+    font-family: $poppinsLight;
+    font-size: 16px;
+    margin: -8px 0 20px 0;
+    opacity: 0.7;
+  }
+}
+
+input {
+  font-family: $poppinsLight !important;
+}
+
+.form__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: 200ms appear forwards;
+
+  .form__container__filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.41);
+  }
+
+  .form__container__form {
+    position: relative;
+    background: white;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    .form__container__form__title {
+      font-family: $poppinsLight;
+      margin-bottom: -10px;
+    }
+
+    .select {
+      width: 300px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.065);
+      outline: none;
+      border: none;
+      font-size: 12px;
+      padding: 10px;
+      color: rgba(0, 0, 0, 0.819);
+
+      option {
+        padding: 10px;
+      }
+    }
+
+    .form__container__form__input {
+      font-size: 14px;
+      border: none;
+      outline: none;
+      width: 300px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.065);
+      padding: 10px;
+      transition: 200ms;
+    }
+
+    .form__container__form__input:focus {
+      box-shadow: 0 0 10px rgb(146, 104, 181);
+    }
+
+    .form__container__form__input::placeholder {
+      color: rgba(0, 0, 0, 1);
+    }
+
+    .form__container__form__btn {
+      width: 300px;
+      border: none;
+      outline: none;
+      background: rgb(146, 104, 181);
+      color: white;
+      padding: 12px 0;
+      cursor: pointer;
+      font-family: $poppinsLight;
+    }
+  }
+}
+
+.transition-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $color;
+  z-index: 999;
+  transform-origin: top right;
+  height: 100vh;
+  opacity: 0.5;
+  backdrop-filter: blur(10px);
+}
+
+.cards__container {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    font-family: $poppinsLight;
+    width: 500px;
+    padding: 20px;
+
+    .card__title {
+      margin-bottom: 10px;
+      color: $color;
+    }
+
+    .card__info {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      font-size: 12px;
+
+      span {
+        font-size: 18px;
+        color: rgb(146, 104, 181);
+      }
+    }
+
+    .card__graphe {
+      width: 250px;
+      height: 250px;
+      margin: 50px auto 0 auto;
+    }
+
+    .info__end {
+      margin-top: 10px;
+
+      span {
+        color: $color;
+      }
+    }
+  }
+}
+
+.link {
+  color: rgb(146, 104, 181);
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.form__charge {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-family: $poppinsLight;
+
+  .container {
+    padding: 0 20px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    .form__title {
+      color: rgb(146, 104, 181);
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: $color;
+      margin-bottom: -15px;
+    }
+
+    .btn__submit {
+      padding: 15px 25px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      background: $color;
+      color: white;
+      transition: 200ms;
+      opacity: 0.8;
+    }
+
+    .btn__submit:hover {
+      opacity: 1;
+    }
+
+    .input__container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: flex-start;
+
+      .label {
+        font-size: 12px;
+      }
+
+      .input {
+        position: relative;
+        width: 100%;
+        height: 40px;
+        outline: none;
+        padding: 0 10px;
+        border: none;
+        background: rgba(0, 0, 0, 0.059);
+        transition: 200ms;
+        font-family: $poppinsLight;
+      }
+
+      .input:focus {
+        box-shadow: 0 0 10px rgb(146, 104, 181);
+      }
+    }
+  }
+}
+
+.balance__container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+
+  .balance__title {
+    font-family: $poppinsLight;
+    color: $color;
+  }
+
+  .balance__card {
+    width: 40%;
+    font-family: $poppinsLight;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+
+    .balance__text {
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+
+      span {
+        font-size: 20px;
+        color: rgb(146, 104, 181);
+      }
+    }
+  }
+}
+
+.nav__eecriture {
+  display: flex;
+  font-family: $poppinsLight;
+
+  .nav__ecriture__item {
+    padding: 5px 30px;
+    position: relative;
+    transition: 200ms;
+    cursor: pointer;
+  }
+
+  .nav__ecriture__item::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgb(146, 104, 181);
+    opacity: 0;
+    transition: 200ms;
+  }
+
+  .nav__ecriture__item.active::before,
+  .nav__ecriture__item:hover::before {
+    opacity: 0.5;
+  }
+
+  .nav__ecriture__item.active,
+  .nav__ecriture__item:hover {
+    color: rgb(146, 104, 181);
+  }
+}
+
+.form__ecriture.active {
+  display: flex;
+}
+
+.form__ecriture {
+  flex-wrap: wrap;
+  width: 700px;
+  gap: 30px;
+  margin-top: 50px;
+  display: none;
+  transition: 200ms;
+
+  .empty {
+    width: 100%;
+  }
+
+  .btn__submit {
+    background: $color;
+    border-radius: 5px;
+    color: white;
+    font-family: $poppinsLight;
+    border: none;
+    outline: none;
+    padding: 10px 25px;
+    margin-top: -10px;
+    cursor: pointer;
+  }
+
+  .input__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 335px;
+    gap: 5px;
+    font-family: $poppinsLight;
+
+    .label {
+      font-size: 14px;
+    }
+
+    .input,
+    .select__container {
+      width: 100%;
+      border: none;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.065);
+      outline: none;
+      padding: 0 10px;
+      transition: 200ms;
+      font-family: $poppinsLight;
+    }
+
+    .select__container .select {
+      width: 100%;
+      background: transparent;
+      height: 100%;
+      border: none;
+      outline: none;
+    }
+
+    .input:focus {
+      box-shadow: 0 0 10px rgb(146, 104, 181);
+    }
+  }
+}
+
+.facture__form {
+  width: 100%;
+
+  .n__products {
+    display: none;
+  }
+
+  .form__title {
+    font-family: $poppinsLight;
+    font-size: 32px;
+    color: $color;
+  }
+
+  .product__container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .autre {
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .product__card {
+    display: flex;
+    gap: 30px;
+  }
+
+  .field__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+    gap: 5px;
+
+    .label {
+      font-family: $poppinsLight;
+      font-size: 12px;
+    }
+
+    .input,
+    .select__container {
+      width: 100%;
+      height: 45px;
+      background: rgba(0, 0, 0, 0.065);
+      padding: 0 10px;
+    }
+
+    .input,
+    .select {
+      border: none;
+      outline: none;
+      transition: 200ms;
+    }
+
+    .input:focus {
+      box-shadow: 0 0 10px rgb(146, 104, 181);
+    }
+
+    .select {
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      font-family: $poppinsLight;
+    }
+  }
+
+  .btn {
+    background: $color;
+    color: white;
+    opacity: 0.7;
+    margin-top: -5px;
+  }
+
+  .add__product {
+    background: rgb(95, 162, 39);
+    margin-top: 20px;
+    width: 182.5px;
+  }
+}
+
+.message__box {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 20px;
+  width: 350px;
+  animation: popup_message 5000ms forwards;
+  font-family: $poppinsLight;
+  font-size: 12px;
+}
+
+.message__box.error1 {
+  background: white;
+  color: rgba(255, 0, 0, 0.83);
+}
+
+.message__box.error2 {
+  background: rgba(243, 109, 89, 0.7);
+  color: white;
+}
+
+.facture__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.701);
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+
+  .facture {
+    position: relative;
+    top: 10px;
+    left: calc(50vw - 450px);
+    width: 900px;
+    height: calc(100vh - 20px);
+    background: white;
+    padding: 40px;
+    font-family: $poppinsLight;
+    overflow-y: auto;
+
+    .facture__header {
+      width: 100%;
+
+      .line {
+        margin-top: 20px;
+      }
+
+      .title {
+        width: 100%;
+        text-align: center;
+        font-size: 40px;
+        color: $color;
+      }
+
+      .subtitle {
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        color: rgb(146, 104, 181);
+      }
+
+      .infos {
+        width: 100%;
+        display: flex;
+        gap: 100px;
+        justify-content: center;
+        font-size: 12px;
+        margin-top: 10px;
+      }
+
+      .section__client {
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+        margin-top: 20px;
+
+        .left__side {
+          width: 400px;
+          .numero__facture {
+            color: $color;
+            font-size: 20px;
+          }
+
+          .text {
+            font-size: 12px;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+
+    .facture_table {
+      margin-left: 95px;
+      width: 100%;
+      margin-top: 50px;
+      font-size: 12px;
+
+      tr {
+        display: flex;
+        gap: 3px;
+      }
+      td {
+        padding: 5px 15px;
+      }
+
+      thead {
+        td {
+          color: $color;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .footer {
+      margin-left: 105px;
+      margin-top: 30px;
+
+      .footer__title {
+        font-size: 24px;
+        color: $color;
+      }
+
+      .text {
+        width: 640px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        font-size: 12px;
+
+        span {
+          color: rgb(146, 104, 181);
+          font-size: 18px;
+        }
+      }
+
+      .end__text {
+        margin-top: 30px;
+        font-size: 12px;
+
+        span {
+          color: rgb(146, 104, 181);
+          font-size: 20px;
+          margin-left: 20px;
+        }
+      }
+
+      .btn__container {
+        display: flex;
+        gap: 15px;
+        margin-top: 50px;
+
+        .btn {
+          color: white;
+        }
+
+        .cancel {
+          background: rgba(0, 0, 0, 0.701);
+        }
+
+        .modify {
+          background: $color;
+        }
+
+        .confirm {
+          background: rgb(95, 162, 39);
+        }
+      }
+    }
+  }
+}
+
+.facture__liste {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-family: $poppinsLight;
+
+  .facture__card:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.148);
+  }
+
+  .facture__card {
+    height: 205px;
+    cursor: pointer;
+    transition: 200ms;
+    width: 400px;
+    padding: 20px;
+
+    .company {
+      color: rgb(146, 104, 181);
+      font-size: 24px;
+    }
+
+    .facture {
+      font-size: 18px;
+      margin-top: 10px;
+      color: $color;
+    }
+
+    .intitule {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .montant {
+      font-size: 16px;
+      color: rgb(95, 162, 39);
+      margin-top: 20px;
+    }
+
+    .date {
+      font-size: 12px;
+    }
+  }
+}
+
+.search__container {
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+
+  section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: $poppinsLight;
+
+    .label {
+      font-size: 12px;
+    }
+
+    .input {
+      padding: 0 10px;
+      width: 300px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.065);
+      border: none;
+      outline: none;
+      transition: 200ms;
+    }
+
+    .input:focus {
+      box-shadow: 0 0 10px rgb(146, 104, 181);
+    }
+
+    .confirm {
+      height: 40px;
+      margin: 0;
+      background: $color;
+      color: white;
+      opacity: 0.7;
+    }
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popup_message {
+  0% {
+    right: -350px;
+  }
+  20%,
+  80% {
+    right: 30px;
+  }
+  100% {
+    right: -350px;
+  }
+}
